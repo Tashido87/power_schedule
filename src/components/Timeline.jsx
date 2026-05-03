@@ -7,7 +7,6 @@ import { isSameDay } from '../utils/dateUtils';
 export function Timeline({ schedule, currentDate, onDateChange, language, translations, showGenerator }) {
   const [showFab, setShowFab] = useState(false);
   const sheetRef = useRef(null);
-  const t = translations[language];
   const now = new Date();
   const isToday = isSameDay(currentDate, now);
 
@@ -62,14 +61,6 @@ export function Timeline({ schedule, currentDate, onDateChange, language, transl
           );
         })}
       </div>
-
-      <div className="sheet-footer">
-        <div className="info-pill">
-          <span data-key="elevatorLabel">{t.elevatorLabel}</span>{' '}
-          <strong data-key="elevatorFee">{t.elevatorFee}</strong>
-        </div>
-      </div>
-
       <button
         className={`fab-btn ${showFab ? 'show' : ''}`}
         aria-label="Jump to Now"

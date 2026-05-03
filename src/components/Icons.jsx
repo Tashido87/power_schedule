@@ -52,7 +52,9 @@ export const SunBurstIcon = () => (
 
 export const SettingsIcon = () => (
   <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="9" cy="9" r="3" />
-    <path d="M9 1v2M9 15v2M3.34 3.34l1.42 1.42M13.24 13.24l1.42 1.42M1 9h2M15 9h2M3.34 14.66l1.42-1.42M13.24 4.76l1.42-1.42" />
+    <path d="M3 5h12" />
+    <path d="M3 13h12" />
+    <circle cx="6" cy="5" r="2" />
+    <circle cx="12" cy="13" r="2" />
   </svg>
 );

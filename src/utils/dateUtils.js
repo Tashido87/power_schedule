@@ -41,7 +41,7 @@ export function getProgressPct(now, start, end) {
   const total = end - start;
   const elapsed = now - start;
   const pct = (elapsed / total) * 100;
-  return Math.max(0, Math.min(100, pct));
+  return Math.max(0, Math.min(100, 100 - pct));
 }
 
 export function formatDate(date, lang, translations) {
