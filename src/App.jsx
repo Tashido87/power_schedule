@@ -34,9 +34,9 @@ function App() {
 
   return (
     <div className="app-shell">
-      <div className="app-content">
-        {activeTab === 'home' ? (
-          <main className="home-view">
+      {activeTab === 'home' ? (
+        <>
+          <div className="app-top">
             <header className="home-header">
               <div className="home-heading">
                 <p className="home-date">{dateLabel}</p>
@@ -53,7 +53,9 @@ function App() {
               onDateChange={setCurrentDate}
               language={language}
             />
+          </div>
 
+          <main className="app-scroll">
             <Timeline
               schedule={schedule}
               currentDate={currentDate}
@@ -62,7 +64,9 @@ function App() {
               showGenerator={showGenerator}
             />
           </main>
-        ) : (
+        </>
+      ) : (
+        <main className="app-scroll settings-scroll">
           <SettingsView
             todayPattern={todayPattern}
             onTodayPatternChange={setTodayPattern}
@@ -74,8 +78,8 @@ function App() {
             onLanguageToggle={toggleLanguage}
             translations={TRANSLATIONS}
           />
-        )}
-      </div>
+        </main>
+      )}
 
       <BottomTabs
         activeTab={activeTab}
