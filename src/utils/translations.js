@@ -18,6 +18,13 @@ export const TRANSLATIONS = {
     today_pattern_desc: "Choose whether today follows Pattern A or Pattern B. Future days will alternate automatically.",
     generator_schedule: "Generator schedule",
     generator_schedule_desc: "Show generator running/rest periods inside outage cards.",
+    appearance: "Appearance",
+    theme: "Theme",
+    language: "Language",
+    light: "Light",
+    dark: "Dark",
+    tab_home: "Home",
+    tab_settings: "Settings",
     months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
   },
   mm: {
@@ -39,6 +46,13 @@ export const TRANSLATIONS = {
     today_pattern_desc: "ဒီနေ့ Pattern A လား Pattern B လားရွေးပါ။ နောက်နေ့များကို အလိုအလျောက်ပြောင်းတွက်ပါမည်။",
     generator_schedule: "မီးစက်အချိန်ဇယား",
     generator_schedule_desc: "မီးပျက်ချိန်အတွင်း မီးစက်မောင်း/နားချိန်များကို ပြပါ။",
+    appearance: "ပုံပန်းသဏ္ဌာန်",
+    theme: "အပြင်အဆင်",
+    language: "ဘာသာစကား",
+    light: "အလင်း",
+    dark: "အမှောင်",
+    tab_home: "ပင်မ",
+    tab_settings: "ဆက်တင်",
     months: ["ဇန်နဝါရီ", "ဖေဖော်ဝါရီ", "မတ်", "ဧပြီ", "မေ", "ဇွန်", "ဇူလိုင်", "သြဂုတ်", "စက်တင်ဘာ", "အောက်တိုဘာ", "နိုဝင်ဘာ", "ဒီဇင်ဘာ"]
   }
 };

@@ -1,13 +1,14 @@
 import { useState } from 'react';
-import { Header } from './components/Header';
-import { HeroStatus } from './components/HeroStatus';
 import { Timeline } from './components/Timeline';
-import { SettingsPanel } from './components/SettingsPanel';
+import { WeekStrip } from './components/WeekStrip';
+import { BottomTabs } from './components/BottomTabs';
+import { SettingsView } from './components/SettingsView';
 import { useTheme } from './hooks/useTheme';
 import { useLanguage } from './hooks/useLanguage';
 import { useSchedule } from './hooks/useSchedule';
 import { useSettings } from './hooks/useSettings';
 import { TRANSLATIONS } from './utils/translations';
+import { isSameDay } from './utils/dateUtils';
 import './App.css';
 
 function App() {
@@ -15,55 +16,74 @@ function App() {
   const { language, toggleLanguage } = useLanguage();
   const { todayPattern, setTodayPattern, showGenerator, setShowGenerator } = useSettings();
   const [currentDate, setCurrentDate] = useState(new Date());
-  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState('home');
   const { schedule, pattern } = useSchedule(currentDate, todayPattern);
+  const t = TRANSLATIONS[language];
+
+  const today = new Date();
+  const isToday = isSameDay(currentDate, today);
+  const monthName = t.months[currentDate.getMonth()];
+  const dayNum = currentDate.getDate();
+  const yearNum = currentDate.getFullYear();
+  const dateLabel = `${monthName} ${dayNum}, ${yearNum}`;
+  const fullWeekday = new Intl.DateTimeFormat(
+    language === 'mm' ? 'my-MM' : 'en-US',
+    { weekday: 'long' }
+  ).format(currentDate);
+  const titleLabel = isToday ? t.today : fullWeekday;
 
   return (
-    <>
-      <div className="app-background"></div>
-      
-      <div className="main-layout">
-        <header className="status-header">
-          <Header
-            pattern={pattern}
-            language={language}
-            onLanguageToggle={toggleLanguage}
+    <div className="app-shell">
+      <div className="app-content">
+        {activeTab === 'home' ? (
+          <main className="home-view">
+            <header className="home-header">
+              <div className="home-heading">
+                <p className="home-date">{dateLabel}</p>
+                <h1 className="home-title">{titleLabel}</h1>
+              </div>
+              <span className="pattern-chip" title="Schedule pattern">
+                <span className="pattern-chip-dot"></span>
+                Pattern {pattern}
+              </span>
+            </header>
+
+            <WeekStrip
+              currentDate={currentDate}
+              onDateChange={setCurrentDate}
+              language={language}
+            />
+
+            <Timeline
+              schedule={schedule}
+              currentDate={currentDate}
+              language={language}
+              translations={TRANSLATIONS}
+              showGenerator={showGenerator}
+            />
+          </main>
+        ) : (
+          <SettingsView
+            todayPattern={todayPattern}
+            onTodayPatternChange={setTodayPattern}
+            showGenerator={showGenerator}
+            onShowGeneratorChange={setShowGenerator}
             theme={theme}
             onThemeToggle={toggleTheme}
-            onSettingsOpen={() => setSettingsOpen(true)}
-          />
-
-          <HeroStatus
-            schedule={schedule}
-            currentDate={currentDate}
             language={language}
+            onLanguageToggle={toggleLanguage}
             translations={TRANSLATIONS}
-            todayPattern={todayPattern}
-            showGenerator={showGenerator}
           />
-        </header>
-
-        <Timeline
-          schedule={schedule}
-          currentDate={currentDate}
-          onDateChange={setCurrentDate}
-          language={language}
-          translations={TRANSLATIONS}
-          showGenerator={showGenerator}
-        />
-
-        <SettingsPanel
-          isOpen={settingsOpen}
-          onClose={() => setSettingsOpen(false)}
-          todayPattern={todayPattern}
-          onTodayPatternChange={setTodayPattern}
-          showGenerator={showGenerator}
-          onShowGeneratorChange={setShowGenerator}
-          language={language}
-          translations={TRANSLATIONS}
-        />
+        )}
       </div>
-    </>
+
+      <BottomTabs
+        activeTab={activeTab}
+        onTabChange={setActiveTab}
+        translations={TRANSLATIONS}
+        language={language}
+      />
+    </div>
   );
 }
 
