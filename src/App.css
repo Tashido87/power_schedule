@@ -108,7 +108,7 @@ ol, ul {
   overflow-y: auto;
   overflow-x: hidden;
   scroll-behavior: smooth;
-  padding-top: env(safe-area-inset-top, 0);
+  padding-top: max(env(safe-area-inset-top, 0px), 52px);
 }
 
 .app-content::-webkit-scrollbar {
@@ -131,10 +131,10 @@ ol, ul {
 
 .home-header {
   display: flex;
-  align-items: flex-start;
+  align-items: flex-end;
   justify-content: space-between;
   gap: 12px;
-  padding: 32px 24px 12px;
+  padding: 18px 24px 8px;
 }
 
 .home-heading {
@@ -152,7 +152,7 @@ ol, ul {
 }
 
 .home-title {
-  font-size: 2.4rem;
+  font-size: 2.1rem;
   font-weight: 800;
   letter-spacing: -0.03em;
   color: var(--c-text);
@@ -172,8 +172,8 @@ ol, ul {
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  margin-top: 10px;
   white-space: nowrap;
+  margin-bottom: 4px;
 }
 
 .pattern-chip-dot {
@@ -191,9 +191,7 @@ ol, ul {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 6px;
-  padding: 18px 24px 24px;
-  position: sticky;
-  top: 0;
+  padding: 14px 24px 18px;
   background: var(--c-bg);
   z-index: 5;
 }
@@ -555,8 +553,8 @@ ol, ul {
 .settings-view {
   display: flex;
   flex-direction: column;
-  padding: 32px 24px 24px;
-  gap: 28px;
+  padding: 18px 24px 24px;
+  gap: 24px;
 }
 
 .settings-header {
@@ -724,7 +722,7 @@ ol, ul {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 14px 24px calc(14px + env(safe-area-inset-bottom, 0px));
+  padding: 6px 24px calc(8px + env(safe-area-inset-bottom, 0px));
   background: var(--c-bg);
   border-top: 1px solid var(--c-border);
   flex-shrink: 0;
@@ -737,8 +735,8 @@ ol, ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  padding: 6px 14px;
+  gap: 2px;
+  padding: 4px 12px;
   color: var(--c-text-ter);
   transition: color 0.25s var(--ease-smooth);
   flex: 1;
@@ -746,8 +744,8 @@ ol, ul {
 }
 
 .tab-pill {
-  width: 44px;
-  height: 44px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -757,8 +755,13 @@ ol, ul {
   transition: all 0.3s var(--ease-smooth);
 }
 
+.tab-pill svg {
+  width: 20px;
+  height: 20px;
+}
+
 .tab-label {
-  font-size: 0.7rem;
+  font-size: 0.66rem;
   font-weight: 600;
   letter-spacing: 0.02em;
 }
