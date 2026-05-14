@@ -105,7 +105,7 @@ ol, ul {
 
 .app-top {
   flex: 0 0 auto;
-  padding-top: max(env(safe-area-inset-top, 0px), 72px);
+  padding-top: max(env(safe-area-inset-top, 0px), 12px);
   background: var(--c-bg);
   z-index: 10;
   position: relative;
@@ -120,7 +120,7 @@ ol, ul {
 }
 
 .app-scroll.settings-scroll {
-  padding-top: max(env(safe-area-inset-top, 0px), 72px);
+  padding-top: max(env(safe-area-inset-top, 0px), 12px);
 }
 
 .app-scroll::-webkit-scrollbar {
@@ -141,7 +141,7 @@ ol, ul {
   align-items: flex-end;
   justify-content: space-between;
   gap: 12px;
-  padding: 18px 24px 8px;
+  padding: 10px 24px 6px;
 }
 
 .home-heading {
@@ -537,21 +537,21 @@ ol, ul {
   color: rgba(255, 255, 255, 0.78);
 }
 
-.tl-sub.sub-active {
-  background: var(--c-gen);
-  color: #ffffff;
+.tl-item.active .tl-sub.sub-active {
+  background: #ffffff;
+  color: var(--state-color);
   border-color: transparent;
-  animation: dotFlash 1.6s ease-out infinite;
-  --state-color: var(--c-gen);
+  font-weight: 700;
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.18);
 }
 
-.tl-sub[data-state="gen-rest"].sub-active {
-  background: var(--c-rest);
-  --state-color: var(--c-rest);
+.tl-item.active .tl-sub.sub-active .tl-sub-time {
+  color: var(--state-color);
+  opacity: 0.85;
 }
 
-.tl-sub.sub-active .tl-sub-time {
-  color: rgba(255, 255, 255, 0.92);
+.tl-item.active .tl-sub.sub-active .tl-sub-icon {
+  color: var(--state-color);
 }
 
 /* ========================================
