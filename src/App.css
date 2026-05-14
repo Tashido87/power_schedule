@@ -71,6 +71,7 @@ body {
   background: var(--c-bg);
   color: var(--c-text);
   height: 100vh;
+  height: 100dvh;
   overflow: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -95,6 +96,7 @@ ol, ul {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  height: 100dvh;
   background: var(--c-bg);
   color: var(--c-text);
   max-width: 640px;
@@ -117,6 +119,8 @@ ol, ul {
   overflow-x: hidden;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
+  scroll-padding-top: 12px;
+  scroll-padding-bottom: 16px;
 }
 
 .app-scroll.settings-scroll {
@@ -729,7 +733,7 @@ ol, ul {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  padding: 4px 24px calc(4px + env(safe-area-inset-bottom, 0px));
+  padding: 6px 24px calc(env(safe-area-inset-bottom, 0px) + 8px);
   background: var(--c-bg);
   border-top: 1px solid var(--c-border);
   flex-shrink: 0;

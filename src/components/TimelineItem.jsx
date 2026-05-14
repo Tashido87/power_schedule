@@ -44,7 +44,7 @@ export function TimelineItem({ slot, isToday, isActive, language, translations, 
   useEffect(() => {
     if (isActive && itemRef.current) {
       const id = setTimeout(() => {
-        itemRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        itemRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }, 220);
       return () => clearTimeout(id);
     }
